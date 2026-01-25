@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Zacky | Personal Brand</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: system-ui, sans-serif;
+}
+
+body {
+  background: #26ade7;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+}
+
+main {
+  position: relative;
+  z-index: 1;
+}
+
+section {
+  min-height: 100vh;
+  padding: 4rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+section > div {
+  background: rgba(0,0,0,0.25);
+  padding: 3rem;
+  border-radius: 20px;
+  backdrop-filter: blur(6px);
+}
+
+h1 {
+  font-size: clamp(3rem, 8vw, 6rem);
+  text-shadow: 4px 4px #f55921;
+}
+
+h2 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  text-shadow: 3px 3px #f55921;
+}
+
+h3, h4 {
+  font-size: 2rem;
+  margin: 1.5rem 0 1rem;
+  text-shadow: 2px 2px #f55921;
+}
+
+p {
+  max-width: 620px;
+  font-size: 1.1rem;
+  opacity: 0.95;
+  margin: auto;
+}
+
+a {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 1rem 2.5rem;
+  background: #f55921;
+  color: #fff;
+  border-radius: 40px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* Floating grids */
+.floating-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.floating-grid img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+/* Centered digital painting */
+.single-center {
+  justify-content: center;
+  margin-top: 3rem; /* extra spacing so heading isn't overlapped */
+  position: relative;
+}
+
+.single-center img {
+  width: 260px;
+  height: auto;
+  border-radius: 20px;
+  cursor: zoom-in;
+  z-index: 2;
+  transition: transform 0.3s ease;
+}
+
+/* Logo */
+.portfolio-logos img {
+  width: 200px;
+  height: auto;
+  border-radius: 20px;
+}
+
+/* Lightbox */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 999;
+}
+
+.lightbox.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.lightbox img {
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 20px;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+  cursor: zoom-out;
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="grid"></canvas>
+
+<main>
+
+<section>
+  <div>
+    <h1>Zacky</h1>
+    <p>The chaotic, comic-style designer you didn’t know you needed.</p>
+  </div>
+</section>
+
+<section>
+  <div>
+    <h2>About Me</h2>
+    <p>
+      I turn ideas into vibrant, reactive visual systems.
+      If it doesn’t move, respond, or surprise someone, I’m not done.
+    </p>
+  </div>
+</section>
+
+<section>
+  <div>
+    <h2>Why Hexagons</h2>
+    <p>
+      Because rectangles are boring and hexagons imply intelligence.
+      Bees use them. Bees are good at math.
+    </p>
+  </div>
+</section>
+
+<section>
+  <div>
+    <h2>Portfolio</h2>
+
+    <h3>Logo</h3>
+    <div class="floating-grid portfolio-logos">
+      <img src="Images/Zbucks-01.png" alt="Zbucks Logo">
+    </div>
+
+    <h3>Digital Design</h3>
+    <div class="floating-grid single-center">
+      <img id="heroImage"
+           src="Images/Zacky_Head_w_BG.png"
+           alt="Zacky Head Digital Painting">
+    </div>
+
+    <h3>Social Media</h3>
+
+    <h4>Emotes</h4>
+    <div class="floating-grid">
+      <img src="Images/Emotes/PeakingZix.png">
+      <img src="Images/Emotes/Zix Smirking Emote - Blush.png">
+      <img src="Images/Emotes/Zix Angry Emote.png">
+      <img src="Images/Emotes/Zix Drinking Emote Original.png">
+      <img src="Images/Emotes/Zix Smirking Emote.png">
+      <img src="Images/Emotes/ZixWink.png">
+      <img src="Images/Emotes/SSJ Chibi Attempt 1.2.png">
+      <img src="Images/Emotes/SSJ Chibi Attempt 1.png">
+      <img src="Images/Emotes/ZixFlipOff.png">
+    </div>
+
+    <h4>Twitter</h4>
+    <div class="floating-grid">
+      <img src="Images/TwitterBanner.png">
+    </div>
+  </div>
+</section>
+
+<section>
+  <div>
+    <h2>Contact</h2>
+    <p>Email me below</p>
+    <a href="mailto:zackyportfolio@gmail.com">Say Hello</a>
+  </div>
+</section>
+
+</main>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <img src="" alt="">
+</div>
+
+<script>
+// Lightbox logic
+const heroImage = document.getElementById('heroImage');
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = lightbox.querySelector('img');
+
+heroImage.addEventListener('click', () => {
+  lightboxImg.src = heroImage.src;
+  lightbox.classList.add('active');
+});
+
+lightbox.addEventListener('click', () => {
+  lightbox.classList.remove('active');
+  lightboxImg.src = '';
+});
+</script>
+
+<script>
+// Hex Grid Background
+const canvas = document.getElementById('grid');
+const ctx = canvas.getContext('2d');
+
+let w, h;
+let mouse = { x: -9999, y: -9999, vx: 0, vy: 0 };
+let lastMouse = { x: 0, y: 0 };
+let scrollY = 0;
+let ripples = [];
+
+const spacing = 34;
+const baseSize = 4;
+const maxSize = 18;
+const influence = 150;
+
+function resize() {
+  w = canvas.width = window.innerWidth;
+  h = canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+window.addEventListener('mousemove', e => {
+  mouse.vx = e.clientX - lastMouse.x;
+  mouse.vy = e.clientY - lastMouse.y;
+  mouse.x = e.clientX;
+  mouse.y = e.clientY;
+  lastMouse = { x: e.clientX, y: e.clientY };
+});
+
+window.addEventListener('scroll', () => {
+  scrollY = window.scrollY;
+});
+
+window.addEventListener('click', e => {
+  ripples.push({ x: e.clientX, y: e.clientY, r: 0 });
+});
+
+function drawHex(x, y, size) {
+  ctx.beginPath();
+  for (let i = 0; i < 6; i++) {
+    const a = Math.PI / 3 * i;
+    ctx.lineTo(
+      x + size * Math.cos(a),
+      y + size * Math.sin(a)
+    );
+  }
+  ctx.closePath();
+  ctx.fill();
+}
+
+function animate() {
+  ctx.clearRect(0, 0, w, h);
+
+  for (let y = 0; y < h + spacing; y += spacing) {
+    for (let x = 0; x < w + spacing; x += spacing) {
+      const offsetX = (Math.floor(y / spacing) % 2) * spacing * 0.5;
+      const hx = x + offsetX;
+      const hy = y;
+
+      let dx = mouse.x - hx;
+      let dy = mouse.y - hy;
+      let dist = Math.hypot(dx, dy);
+
+      let size = baseSize;
+
+      if (dist < influence) {
+        let t = 1 - dist / influence;
+        size += t * (maxSize - baseSize);
+      }
+
+      size += Math.min(Math.abs(mouse.vx + mouse.vy) * 0.05, 6);
+      size += Math.sin((hy + scrollY) * 0.01) * 1.5;
+
+      ripples.forEach(r => {
+        let d = Math.hypot(r.x - hx, r.y - hy);
+        if (Math.abs(d - r.r) < 18) size += 6;
+      });
+
+      ctx.fillStyle = dist < influence ? '#f55921' : '#ffffff';
+      drawHex(hx, hy, size);
+    }
+  }
+
+  ripples.forEach(r => r.r += 8);
+  ripples = ripples.filter(r => r.r < 600);
+
+  requestAnimationFrame(animate);
+}
+
+animate();
+
+// Hero image float effect
+function floatHeroImage() {
+  const rect = heroImage.getBoundingClientRect();
+  const dx = mouse.x - (rect.left + rect.width / 2);
+  const dy = mouse.y - (rect.top + rect.height / 2);
+  const dist = Math.hypot(dx, dy);
+
+  heroImage.style.transform = `
+    translate(${dx / 100}px, ${dy / 100}px)
+    scale(${1 + Math.min(dist/1000, 0.1)})
+    rotate(${Math.sin(dist/50)}deg)
+  `;
+
+  requestAnimationFrame(floatHeroImage);
+}
+
+floatHeroImage();
+</script>
+
+</body>
+</html>
